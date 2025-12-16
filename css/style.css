@@ -1,9 +1,18 @@
 @import url("header.css");
 @import url("footer.css");
+@import url("main.css");
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --font-header: "Inter Tight", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  /* overflow-x: hidden; */
+  margin: 0;
+  padding: 0;
 }
 
 *,
