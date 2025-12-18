@@ -1,4 +1,3 @@
-// 1. Функція завантаження HTML
 function loadHTML(elementId, fileName, callback) {
   fetch(fileName)
     .then((response) => {
@@ -6,7 +5,6 @@ function loadHTML(elementId, fileName, callback) {
     })
     .then((data) => {
       document.getElementById(elementId).innerHTML = data;
-      // Якщо передали функцію-callback, запускаємо її
       if (callback) {
         callback();
       }
@@ -14,7 +12,6 @@ function loadHTML(elementId, fileName, callback) {
     .catch((err) => console.error("Помилка завантаження:", err));
 }
 
-// 2. Логіка мобільного меню (твоя існуюча)
 function initMobileMenu() {
   const mobileMenu = document.querySelector(".mobile-menu");
   const headerBtn = document.querySelector(".header-actions .burger-menu-btn");
@@ -79,9 +76,62 @@ function initCatalog() {
   }
 }
 
+function initSlider() {
+  const sliders = document.querySelectorAll(".productSwiper");
+
+  sliders.forEach((sliderElement) => {
+    new Swiper(sliderElement, {
+      observer: true,
+      observeParents: true,
+
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      loop: false,
+
+      navigation: {
+        nextEl: ".next-slide",
+        prevEl: ".prev-slide",
+      },
+
+      scrollbar: {
+        el: sliderElement.querySelector(".swiper-scrollbar"), // Шукаємо смугу всередині поточного слайдера
+        draggable: true, // Дозволяє тягнути смугу пальцем
+        hide: false, // Не ховати автоматично
+        snapOnRelease: false, // Плавна прокрутка
+      },
+
+      breakpoints: {
+        320: { spaceBetween: 10 },
+        768: { spaceBetween: 20 },
+      },
+    });
+  });
+
+  const tabBtns = document.querySelectorAll(".tab-btn");
+  const tabPanes = document.querySelectorAll(".tab-pane");
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      tabBtns.forEach((b) => b.classList.remove("active"));
+      tabPanes.forEach((p) => p.classList.remove("active"));
+
+      btn.classList.add("active");
+
+      const targetId = btn.getAttribute("data-target");
+      const targetPane = document.getElementById(targetId);
+      if (targetPane) {
+        targetPane.classList.add("active");
+      }
+    });
+  });
+
+  console.log("Слайдери та Таби запущено!");
+}
+
 loadHTML("header-placeholder", "components/header.html", () => {
   initMobileMenu();
   initCatalog();
 });
 
+loadHTML("main-slider-placeholder", "components/main-slider.html", initSlider);
 loadHTML("footer-placeholder", "components/footer.html");
