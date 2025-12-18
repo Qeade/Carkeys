@@ -94,10 +94,10 @@ function initSlider() {
       },
 
       scrollbar: {
-        el: sliderElement.querySelector(".swiper-scrollbar"), // Шукаємо смугу всередині поточного слайдера
-        draggable: true, // Дозволяє тягнути смугу пальцем
-        hide: false, // Не ховати автоматично
-        snapOnRelease: false, // Плавна прокрутка
+        el: sliderElement.querySelector(".swiper-scrollbar"),
+        draggable: true,
+        hide: false,
+        snapOnRelease: false,
       },
 
       breakpoints: {
@@ -134,4 +134,5 @@ loadHTML("header-placeholder", "components/header.html", () => {
 });
 
 loadHTML("main-slider-placeholder", "components/main-slider.html", initSlider);
+loadHTML("brand-section-placeholder", "components/brand-section.html");
 loadHTML("footer-placeholder", "components/footer.html");
