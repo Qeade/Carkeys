@@ -136,5 +136,6 @@ loadHTML("header-placeholder", "components/header.html", () => {
 loadHTML("main-slider-placeholder", "components/main-slider.html", initSlider);
 loadHTML("brand-section-placeholder", "components/brand-section.html");
 loadHTML("often-section-placeholder", "components/often-section.html");
+loadHTML("contact-section-placeholder", "components/contact-section.html");
 
 loadHTML("footer-placeholder", "components/footer.html");
